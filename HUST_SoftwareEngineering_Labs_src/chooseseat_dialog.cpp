@@ -50,7 +50,7 @@ void chooseSeat_Dialog::setImage()
     QPixmap photo;
     if(query.next())
     {
-        QLabel *PicLabel = new QLabel();
+        auto *PicLabel = new QLabel();
         photo.loadFromData(query.value(1).toByteArray(), "JPG"); //从数据库中读出图片为二进制数据，图片格式为JPG，然后显示到QLabel里
         //photo.scaledToHeight(ui->graphicsView->maximumHeight());
         //photo.scaledToWidth(ui->graphicsView->maximumWidth());
@@ -59,7 +59,7 @@ void chooseSeat_Dialog::setImage()
         PicLabel->setScaledContents(true);
     }
 
-    QGraphicsScene *scene = new QGraphicsScene;
+    auto *scene = new QGraphicsScene;
     scene->addPixmap(photo);
     ui->graphicsView->setScene(scene);
     ui->graphicsView->resize(photo.width()*0.5 + 10, photo.height()*0.5 + 10);
@@ -85,7 +85,7 @@ void chooseSeat_Dialog::setButtonGroup(int FID)
         return;
     }
     ;
-    QPushButton* pushbutton=NULL;
+    QPushButton* pushbutton=nullptr;
     int rowBefore=1;
     int row=1;
     int col=-1;
@@ -98,7 +98,7 @@ void chooseSeat_Dialog::setButtonGroup(int FID)
         usable=query.value(2).toString().toInt();
         len=query.value(1).toString().length();
         //qDebug()<<query.value(1).toString();
-        row=query.value(1).toString().mid(0,len-1).toInt();
+        row=query.value(1).toString().midRef(0,len-1).toInt();
         if(row!=rowBefore)
         {
             col=0;
@@ -173,7 +173,7 @@ void chooseSeat_Dialog::on_chooseSteat_pushButton_clicked()
     while (i.hasNext())
     {
 //        qDebug() <<i.next().key()<<i.next().value();
-        if(i.next().value()->isChecked()==true)
+        if(i.next().value()->isChecked())
         {
             seatName=i.key();
             break;
@@ -190,7 +190,7 @@ void chooseSeat_Dialog::on_chooseSteat_pushButton_clicked()
         qDebug()<<data.toString();
         seatName=data.toString();
     }
-    QMessageBox::StandardButton rb = QMessageBox::question(NULL, "请确认座位", "您选择的座位为:"+seatName, QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
+    QMessageBox::StandardButton rb = QMessageBox::question(nullptr, "请确认座位", "您选择的座位为:"+seatName, QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
     if(rb == QMessageBox::Yes)
     {
         mw->seatName=seatName;

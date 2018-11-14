@@ -27,20 +27,21 @@ int main(int argc, char *argv[])
     }
     else
     {
-          QMessageBox::warning(NULL,"警告","无法连接数据库");
+          QMessageBox::warning(nullptr,"警告","无法连接数据库");
     }
     //configure icon
-    a.setWindowIcon(QIcon(":/main.ico"));
+    QApplication::setWindowIcon(QIcon(":/main.ico"));
 
     QString currentPath;
     QDir dir;
-    currentPath=dir.currentPath();
+    currentPath=QDir::currentPath();
     qDebug()<<"path"<<currentPath;
 
     //prepare view data
     QSqlQuery query;
     query.prepare("select * from `FLIGHTinfo` as f where exists(select * from `FSTATUSinfo` as s where s.`FID`=f.`FID` and s.`USABLE`='1') and f.`FID`=3;");
-    bool isOK=query.exec();
+//    bool isOK=query.exec();
+    query.exec();
     while(query.next())
     {
         qDebug()<<query.value(0).toString();
@@ -49,5 +50,5 @@ int main(int argc, char *argv[])
     l.db=&db;
     l.show();
 
-    return a.exec();
+    return QApplication::exec();
 }

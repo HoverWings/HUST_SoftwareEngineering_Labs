@@ -50,10 +50,10 @@ void login_dialog::on_login_pushButton_clicked()
     }
     else
     {
-        QMessageBox::warning(NULL,"警告","用户名或者密码错误！");
+        QMessageBox::warning(nullptr,"警告","用户名或者密码错误！");
         return;
     }
-    MainWindow* w=new MainWindow(NULL,isRoot);
+    auto* w=new MainWindow(nullptr,isRoot);
     // set user information
     w->UID=query.value(0).toInt();
     w->userName=query.value(1).toString();

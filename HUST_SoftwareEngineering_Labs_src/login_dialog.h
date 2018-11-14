@@ -27,7 +27,7 @@ class login_dialog : public QDialog
 
 public:
     explicit login_dialog(QWidget *parent = 0);
-    QSqlDatabase* db;
+    QSqlDatabase* db{};
     ~login_dialog();
 
 private slots:

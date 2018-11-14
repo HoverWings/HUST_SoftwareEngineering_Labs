@@ -30,14 +30,14 @@ class MySqlQueryModel : public QSqlQueryModel
 public:
 
     //public var
-    int opView;
-    int  opTable;
+    int opView{};
+    int  opTable{};
     QString opName;
     QString opPRI;
-    int opPRI_col;
+    int opPRI_col{};
     QVector<QString> opTitle;   //table title
     QVector<QString> addVec;    //the vec
-    class MainWindow* mw;
+    class MainWindow* mw{};
     QMap<QString,QString> map;
 
     // public function
@@ -57,8 +57,8 @@ public:
 
 private:
     //private var
-    int opRow;
-    int opCol;
+    int opRow{};
+    int opCol{};
 
     //private funciton
 

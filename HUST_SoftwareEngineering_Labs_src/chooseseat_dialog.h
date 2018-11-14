@@ -40,7 +40,7 @@ public:
     QString seatName;
 
 private:
-    QButtonGroup *buttonGroup;
+    QButtonGroup *buttonGroup{};
     QMap<QString, QPushButton*> pushButtonMap;
     Ui::chooseSeat_Dialog *ui;
     void setButtonGroup(int FID);

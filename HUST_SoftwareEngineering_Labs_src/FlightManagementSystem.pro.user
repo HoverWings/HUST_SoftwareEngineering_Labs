@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.7.2, 2018-11-14T01:01:16. -->
+<!-- Written by QtCreator 4.7.2, 2018-11-14T21:00:44. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -57,6 +57,64 @@
   <valuemap type="QVariantMap">
    <valuelist type="QVariantList" key="ClangCodeModel.CustomCommandLineKey"/>
    <value type="bool" key="ClangCodeModel.UseGlobalConfig">true</value>
+   <value type="bool" key="ClangTools.BuildBeforeAnalysis">false</value>
+   <value type="QString" key="ClangTools.DiagnosticConfig">Builtin.TidyAndClazy</value>
+   <valuelist type="QVariantList" key="ClangTools.SelectedDirs">
+    <value type="QString">/home/hover/Desktop/Labs/HUST_SoftwareEngineering_Labs/HUST_SoftwareEngineering_Labs_src/FlightManagementSystem.pro</value>
+   </valuelist>
+   <valuelist type="QVariantList" key="ClangTools.SelectedFiles"/>
+   <valuelist type="QVariantList" key="ClangTools.SuppressedDiagnostics">
+    <valuemap type="QVariantMap">
+     <value type="QString" key="ClangTools.SuppressedDiagnosticContext"></value>
+     <value type="QString" key="ClangTools.SuppressedDiagnosticContextKind"></value>
+     <value type="QString" key="ClangTools.SuppressedDiagnosticFilePath">addflight_dialog.cpp</value>
+     <value type="QString" key="ClangTools.SuppressedDiagnosticMessage">use nullptr [modernize-use-nullptr]</value>
+     <value type="int" key="ClangTools.SuppressedDiagnosticUniquifier">1</value>
+    </valuemap>
+    <valuemap type="QVariantMap">
+     <value type="QString" key="ClangTools.SuppressedDiagnosticContext"></value>
+     <value type="QString" key="ClangTools.SuppressedDiagnosticContextKind"></value>
+     <value type="QString" key="ClangTools.SuppressedDiagnosticFilePath">addflight_dialog.cpp</value>
+     <value type="QString" key="ClangTools.SuppressedDiagnosticMessage">do not implicitly decay an array into a pointer; consider using gsl::array_view or an explicit cast instead [cppcoreguidelines-pro-bounds-array-to-pointer-decay]</value>
+     <value type="int" key="ClangTools.SuppressedDiagnosticUniquifier">3</value>
+    </valuemap>
+    <valuemap type="QVariantMap">
+     <value type="QString" key="ClangTools.SuppressedDiagnosticContext"></value>
+     <value type="QString" key="ClangTools.SuppressedDiagnosticContextKind"></value>
+     <value type="QString" key="ClangTools.SuppressedDiagnosticFilePath">main.cpp</value>
+     <value type="QString" key="ClangTools.SuppressedDiagnosticMessage">static member accessed through instance [readability-static-accessed-through-instance]</value>
+     <value type="int" key="ClangTools.SuppressedDiagnosticUniquifier">1</value>
+    </valuemap>
+    <valuemap type="QVariantMap">
+     <value type="QString" key="ClangTools.SuppressedDiagnosticContext"></value>
+     <value type="QString" key="ClangTools.SuppressedDiagnosticContextKind"></value>
+     <value type="QString" key="ClangTools.SuppressedDiagnosticFilePath">chooseseat_dialog.cpp</value>
+     <value type="QString" key="ClangTools.SuppressedDiagnosticMessage">constructor does not initialize these fields: buttonGroup [cppcoreguidelines-pro-type-member-init]</value>
+     <value type="int" key="ClangTools.SuppressedDiagnosticUniquifier">1</value>
+    </valuemap>
+    <valuemap type="QVariantMap">
+     <value type="QString" key="ClangTools.SuppressedDiagnosticContext"></value>
+     <value type="QString" key="ClangTools.SuppressedDiagnosticContextKind"></value>
+     <value type="QString" key="ClangTools.SuppressedDiagnosticFilePath">chooseseat_dialog.cpp</value>
+     <value type="QString" key="ClangTools.SuppressedDiagnosticMessage">use auto when initializing with new to avoid duplicating the type name [modernize-use-auto]</value>
+     <value type="int" key="ClangTools.SuppressedDiagnosticUniquifier">1</value>
+    </valuemap>
+    <valuemap type="QVariantMap">
+     <value type="QString" key="ClangTools.SuppressedDiagnosticContext"></value>
+     <value type="QString" key="ClangTools.SuppressedDiagnosticContextKind"></value>
+     <value type="QString" key="ClangTools.SuppressedDiagnosticFilePath">chooseseat_dialog.cpp</value>
+     <value type="QString" key="ClangTools.SuppressedDiagnosticMessage">narrowing conversion from 'double' to 'int' [cppcoreguidelines-narrowing-conversions]</value>
+     <value type="int" key="ClangTools.SuppressedDiagnosticUniquifier">0</value>
+    </valuemap>
+    <valuemap type="QVariantMap">
+     <value type="QString" key="ClangTools.SuppressedDiagnosticContext"></value>
+     <value type="QString" key="ClangTools.SuppressedDiagnosticContextKind"></value>
+     <value type="QString" key="ClangTools.SuppressedDiagnosticFilePath">chooseseat_dialog.cpp</value>
+     <value type="QString" key="ClangTools.SuppressedDiagnosticMessage">use nullptr [modernize-use-nullptr]</value>
+     <value type="int" key="ClangTools.SuppressedDiagnosticUniquifier">1</value>
+    </valuemap>
+   </valuelist>
+   <value type="bool" key="ClangTools.UseGlobalSettings">true</value>
   </valuemap>
  </data>
  <data>

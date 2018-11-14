@@ -190,13 +190,13 @@ void report_Dialog::fun()
         set->append(flightSell);
     }
 
-    QBarSeries *barseries = new QBarSeries();
+    auto *barseries = new QBarSeries();
     for(int i=0;i<flightNum;i++)
     {
         barseries->append(BarSetV[i]);
     }
 
-    QChart *chart = new QChart();
+    auto *chart = new QChart();
     chart->addSeries(barseries);
     //chart->addSeries(lineseries);
     chart->setTitle("Report");
@@ -204,13 +204,13 @@ void report_Dialog::fun()
     QStringList categories;
     categories << QString::number(M2month.month(),10) << QString::number(M1month.month(),10) << QString::number(now.month(),10);
     //categories << "Jan" << "Feb" << "Mar" << "Apr" << "May" << "Jun";
-    QBarCategoryAxis *axisX = new QBarCategoryAxis();
+    auto *axisX = new QBarCategoryAxis();
     axisX->append(categories);
     //chart->setAxisX(axisX, lineseries);
     chart->setAxisX(axisX, barseries);
     //axisX->setRange(QString("Jan"), QString("Jun"));
 
-    QValueAxis *axisY = new QValueAxis();
+    auto *axisY = new QValueAxis();
     //chart->setAxisY(axisY, lineseries);
     chart->setAxisY(axisY, barseries);
     axisY->setRange(0, 20);
@@ -218,7 +218,7 @@ void report_Dialog::fun()
     chart->legend()->setVisible(true);
     chart->legend()->setAlignment(Qt::AlignBottom);
 
-    QChartView *chartView = new QChartView(chart);
+    auto *chartView = new QChartView(chart);
     chartView->setRenderHint(QPainter::Antialiasing);
     ui->graphicsView->setViewport(chartView);
 }

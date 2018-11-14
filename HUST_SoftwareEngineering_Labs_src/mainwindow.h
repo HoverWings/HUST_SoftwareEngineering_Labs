@@ -38,12 +38,12 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    int UID;
+    int UID{};
     QString userName;
     bool isRoot=false;
     QString seatName;
 
-    QSqlDatabase* db;
+    QSqlDatabase* db{};
     explicit MainWindow(QWidget *parent = 0,bool isRoot = false);
     class MySqlQueryModel* myModel=NULL;
     QTableView * pOpView=NULL;
@@ -52,8 +52,8 @@ public:
 private:
     Ui::MainWindow *ui;
 
-    int selRow;
-    int selCol;
+    int selRow{};
+    int selCol{};
     bool isDataChanged=false;
     bool isTimeChanged=false;
     void setFlight_Combox();

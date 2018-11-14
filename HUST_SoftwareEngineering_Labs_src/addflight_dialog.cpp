@@ -94,9 +94,9 @@ addFlight_Dialog::~addFlight_Dialog()
 
 void addFlight_Dialog::on_post_Button_clicked()
 {
-    if(isDateChanged==false || isTimeChanged==false)
+    if(!isDateChanged || !isTimeChanged)
     {
-         QMessageBox::information(NULL, "Attention!", "请设置时间！", QMessageBox::Yes);
+         QMessageBox::information(nullptr, "Attention!", "请设置时间！", QMessageBox::Yes);
          return;
     }
 
@@ -121,9 +121,9 @@ void addFlight_Dialog::on_post_Button_clicked()
     QVectorIterator<QString>  i(vec);
     while (i.hasNext())
     {
-        if(i.next().isEmpty()==true)
+        if(i.next().isEmpty())
         {
-            QMessageBox::information(NULL, "Please Fit the form", "请填写完整表单！", QMessageBox::Yes);
+            QMessageBox::information(nullptr, "Please Fit the form", "请填写完整表单！", QMessageBox::Yes);
             return;
         }
     }
@@ -146,11 +146,11 @@ void addFlight_Dialog::on_post_Button_clicked()
     isOK=query.exec();
     if(!isOK)
     {
-        QMessageBox::information(NULL, "information", "插入失败！数据错误！", QMessageBox::Yes);
+        QMessageBox::information(nullptr, "information", "插入失败！数据错误！", QMessageBox::Yes);
         qDebug()<<"插入失败!";
         return;
     }
-    QMessageBox::information(NULL, "information", "插入成功！", QMessageBox::Yes);
+    QMessageBox::information(nullptr, "information", "插入成功！", QMessageBox::Yes);
     //process FSTATUS info
     query.clear();
     str="select * from FMODELinfo where FMODEL = :FMODEL";

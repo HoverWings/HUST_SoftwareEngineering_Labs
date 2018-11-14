@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent,bool isRoot) :
 {
     ui->setupUi(this);
     //set model pointer
-    MySqlQueryModel* myModel = new MySqlQueryModel(this);
+    auto* myModel = new MySqlQueryModel(this);
     this->myModel=myModel;
     myModel->mw=this;
 
@@ -84,7 +84,6 @@ void MainWindow::on_action_F_triggered() // print FLIGHTinfor 1 to view
         myModel->setHeaderData(i, Qt::Horizontal, myModel->opTitle[i]);
     }
     pOpView->setModel(myModel);
-    return;
 }
 
 //void MainWindow::on_deleteButton_clicked()
@@ -122,33 +121,33 @@ void MainWindow::on_queryButton_clicked()
     str="select * from "+myModel->opName+" as f where ";
     if(ui->FFROM_lineEdit->text().isEmpty())
     {
-         QMessageBox::about(NULL, "Attention!", "请输入起始地！");
+         QMessageBox::about(nullptr, "Attention!", "请输入起始地！");
          return;
     }
-    else
-    {
+    
+    
         // the fitst condition and don't need 'and'
         qDebug()<<"起始地"<<ui->FFROM_lineEdit->text();
         str+="FFROM =";
         str+=" '";
         str+=ui->FFROM_lineEdit->text();
         str+="' ";
-    }
+    
     if(ui->FTO_lineEdit->text().isEmpty())
     {
-         QMessageBox::about(NULL, "Attention!", "请输入到达地！");
+         QMessageBox::about(nullptr, "Attention!", "请输入到达地！");
          return;
 
     }
-    else
-    {
+    
+    
         qDebug()<<"到达地"<<ui->FTO_lineEdit->text();
         str+=" and ";
         str+="FTO =";
         str+=" '";
         str+=ui->FTO_lineEdit->text();
         str+="' ";
-    }
+    
     if(isDataChanged)
     {
         QDate date = ui->dateEdit->date();
@@ -199,7 +198,6 @@ void MainWindow::on_queryButton_clicked()
         myModel->setHeaderData(i, Qt::Horizontal, myModel->opTitle[i]);
     }
     pOpView->setModel(myModel);
-    return;
 }
 
 void MainWindow::on_tabWidget_currentChanged(int index)
@@ -355,7 +353,7 @@ void MainWindow::on_postButton_clicked()
     int row= pOpView->currentIndex().row();
     if(row==-1)
     {
-         QMessageBox::information(NULL, "订单错误", "请先查询", QMessageBox::Yes, QMessageBox::Yes);
+         QMessageBox::information(nullptr, "订单错误", "请先查询", QMessageBox::Yes, QMessageBox::Yes);
          return;
     }
     QAbstractItemModel *model =pOpView->model();
@@ -372,13 +370,13 @@ void MainWindow::on_postButton_clicked()
     int UID=this->UID;
 
     // process choose seat;
-    chooseSeat_Dialog* chooseSeatD=new chooseSeat_Dialog(this,FID);
+    auto* chooseSeatD=new chooseSeat_Dialog(this,FID);
     chooseSeatD->exec(); // to get the seat id
 
     // close the window without choose the seat
     if(seatName=="")
     {
-        QMessageBox::information(NULL, "订单错误！", "未选择座位", QMessageBox::Yes, QMessageBox::Yes);
+        QMessageBox::information(nullptr, "订单错误！", "未选择座位", QMessageBox::Yes, QMessageBox::Yes);
         return;
     }
     QString OTIME =QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
@@ -462,11 +460,11 @@ void MainWindow::on_Unsubscribe_pushButton_clicked()
     if(OSTATE=="Unsubscribe")
     {
         //QMessageBox::StandardButton rb = QMessageBox::information(NULL, "退订错误！", "订单状态错误", QMessageBox::Yes, QMessageBox::Yes);
-        QMessageBox::information(NULL, "退订错误！", "订单状态错误", QMessageBox::Yes, QMessageBox::Yes);
+        QMessageBox::information(nullptr, "退订错误！", "订单状态错误", QMessageBox::Yes, QMessageBox::Yes);
     }
     //qDebug()<<chsVecs;
     //QMessageBox::StandardButton rb = QMessageBox::question(NULL, "订单退订！", "你确定要退订订单:"+QString::number(OID,10)+"从"+FFROM+"飞往"+FTO+" 于 "+FTIME, QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
-    QMessageBox::StandardButton rb = QMessageBox::question(NULL, "订单退订！", "你确定要退订订单:"+QString::number(OID,10), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
+    QMessageBox::StandardButton rb = QMessageBox::question(nullptr, "订单退订！", "你确定要退订订单:"+QString::number(OID,10), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
     if(rb == QMessageBox::Yes)
     {
         //process ORDERinfo
@@ -485,18 +483,18 @@ void MainWindow::on_Unsubscribe_pushButton_clicked()
         bool isOk2 = query.exec();
         if(isOk1&&isOk2)
         {
-            QMessageBox::about(NULL, "Attention", "退订成功");
+            QMessageBox::about(nullptr, "Attention", "退订成功");
             setTab();
             qDebug()<<"退订成功";
             return;
         }
-        else
-        {
+        
+        
             // roll back
-            QMessageBox::about(NULL, "Attention", "退订失败");
+            QMessageBox::about(nullptr, "Attention", "退订失败");
             qDebug()<<"删除失败";
             return;
-        }
+        
     }
 }
 
@@ -504,7 +502,7 @@ void MainWindow::on_Unsubscribe_pushButton_clicked()
 
 void MainWindow::on_addFlightButton_clicked()
 {
-    addFlight_Dialog* addflightdialog=new addFlight_Dialog(NULL);
+    auto* addflightdialog=new addFlight_Dialog(nullptr);
     addflightdialog->exec();
 
 }
@@ -525,7 +523,7 @@ void MainWindow::on_deleteFlightButton_clicked()
     }
     int FID=chsVecs[0].toInt();
     int UID=this->UID;
-    QMessageBox::StandardButton rb = QMessageBox::question(NULL, "航班删除！", "你确定要删除航班:"+QString::number(FID,10), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
+    QMessageBox::StandardButton rb = QMessageBox::question(nullptr, "航班删除！", "你确定要删除航班:"+QString::number(FID,10), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
     if(rb == QMessageBox::Yes)
     {
         QSqlQuery query;
@@ -590,7 +588,7 @@ void MainWindow::on_checkin_pushButton_clicked()
     }
     if(!(FDT>before&&FDT<now))
     {
-        QMessageBox::information(NULL, "进站错误！", "时间错误无法进站！", QMessageBox::Yes, QMessageBox::Yes);
+        QMessageBox::information(nullptr, "进站错误！", "时间错误无法进站！", QMessageBox::Yes, QMessageBox::Yes);
         return;
     }
 
@@ -598,12 +596,12 @@ void MainWindow::on_checkin_pushButton_clicked()
     if(OSTATE=="Unsubscribe" or OSTATE=="check-in" )
     {
         //QMessageBox::StandardButton rb = QMessageBox::information(NULL, "退订错误！", "订单状态错误", QMessageBox::Yes, QMessageBox::Yes);
-        QMessageBox::information(NULL, "进站错误！", "进站状态错误", QMessageBox::Yes, QMessageBox::Yes);
+        QMessageBox::information(nullptr, "进站错误！", "进站状态错误", QMessageBox::Yes, QMessageBox::Yes);
         return;
     }
     //qDebug()<<chsVecs;
     //QMessageBox::StandardButton rb = QMessageBox::question(NULL, "订单退订！", "你确定要退订订单:"+QString::number(OID,10)+"从"+FFROM+"飞往"+FTO+" 于 "+FTIME, QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
-    QMessageBox::StandardButton rb = QMessageBox::question(NULL, "进站！", "你进站:"+QString::number(OID,10), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
+    QMessageBox::StandardButton rb = QMessageBox::question(nullptr, "进站！", "你进站:"+QString::number(OID,10), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
     if(rb == QMessageBox::Yes)
     {
         //process ORDERinfo
@@ -617,7 +615,7 @@ void MainWindow::on_checkin_pushButton_clicked()
         if(!isOk1)
         {
             // roll back
-            QMessageBox::about(NULL, "Attention", "进站失败");
+            QMessageBox::about(nullptr, "Attention", "进站失败");
             qDebug()<<"进站失败";
             return;
         }
@@ -682,7 +680,7 @@ void MainWindow::on_checkin_pushButton_clicked()
         printdialog->exec();
 
 
-        QMessageBox::about(NULL, "Attention", "进站成功");
+        QMessageBox::about(nullptr, "Attention", "进站成功");
         setTab();
         qDebug()<<"进站成功";
         return;
@@ -692,6 +690,6 @@ void MainWindow::on_checkin_pushButton_clicked()
 
 void MainWindow::on_pushButton_clicked()
 {
-    report_Dialog* reportdialog=new report_Dialog(this);
+    auto* reportdialog=new report_Dialog(this);
     reportdialog->exec();
 }

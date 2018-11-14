@@ -41,7 +41,7 @@ private slots:
 
 private:
     Ui::report_Dialog *ui;
-    int flightNum;
+    int flightNum{};
     void setFlight_Combox();
     void fun();
 };
