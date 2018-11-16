@@ -46,10 +46,10 @@ void report_Dialog::setFlight_Combox()
     com->setCurrentIndex(-1);
 }
 
-void report_Dialog::on_FLIGHT_comboBox_currentTextChanged(const QString &arg1)
-{
-    //this->resize(440, 300);
-}
+//void report_Dialog::on_FLIGHT_comboBox_currentTextChanged(const QString &arg1)
+//{
+//    //this->resize(440, 300);
+//}
 
 
 

@@ -522,7 +522,7 @@ void MainWindow::on_deleteFlightButton_clicked()
         chsVecs.append(data.toString());
     }
     int FID=chsVecs[0].toInt();
-    int UID=this->UID;
+//    int UID=this->UID;
     QMessageBox::StandardButton rb = QMessageBox::question(nullptr, "航班删除！", "你确定要删除航班:"+QString::number(FID,10), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
     if(rb == QMessageBox::Yes)
     {
@@ -582,7 +582,7 @@ void MainWindow::on_checkin_pushButton_clicked()
     if(query.next())
     {
         QDate FDATE=query.value(0).toDate();
-        QTime FTIME=query.value(1).toTime();
+//        QTime FTIME=query.value(1).toTime();
         //FDT=QDateTime(FDATE)+QDate(FTIME.QTime);
         FDT=QDateTime(FDATE);
     }

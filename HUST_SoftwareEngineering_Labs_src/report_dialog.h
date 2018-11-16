@@ -35,7 +35,7 @@ public:
     ~report_Dialog();
 
 private slots:
-    void on_FLIGHT_comboBox_currentTextChanged(const QString &arg1);
+//    void on_FLIGHT_comboBox_currentTextChanged(const QString &arg1);
 
     void on_show_pushButton_clicked();
 
